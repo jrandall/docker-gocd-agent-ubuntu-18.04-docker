@@ -1,0 +1,8 @@
+#!/bin/sh
+
+uid=$(echo ${DOCKER_TAG} | awk 'BEGIN {FS="_"} {print $2}')
+gid=$(echo ${DOCKER_TAG} | awk 'BEGIN {FS="_"} {print $3}')
+dockergid=$(echo ${DOCKER_TAG} | awk 'BEGIN {FS="_"} {print $4}')
+
+echo "building with UID=${uid} GID=${gid} DOCKERGID=${dockergid} based on DOCKER_TAG=${DOCKER_TAG}"
+docker build --build-arg UID=${uid} --build-arg GID=${gid} --build-arg DOCKERGID=${dockergid} -t ${IMAGE_NAME} .
