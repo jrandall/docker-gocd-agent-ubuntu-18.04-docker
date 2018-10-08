@@ -7,4 +7,6 @@ ARG DOCKERGID=999
 RUN \
   groupadd -g ${DOCKERGID} docker && \ 
   adduser go docker && \
-  curl --fail --location --silent --show-error "https://download.docker.com/linux/static/stable/x86_64/docker-18.06.1-ce.tgz" | tar zxO docker/docker > /usr/bin/docker
+  (curl --fail --location --silent --show-error "https://download.docker.com/linux/static/stable/x86_64/docker-18.06.1-ce.tgz" | tar zxO docker/docker > /usr/bin/docker) && \
+  chmod a+x /usr/bin/docker
+
