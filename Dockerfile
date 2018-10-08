@@ -16,5 +16,6 @@ RUN \
   && apt-get install -y --no-install-recommends \
        git \
        gpg \
+       gpg-agent \
   && rm -rf /var/lib/apt/lists/*
 
